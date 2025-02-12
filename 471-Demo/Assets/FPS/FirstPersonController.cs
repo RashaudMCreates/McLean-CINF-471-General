@@ -18,7 +18,8 @@ GameObject cam;
 GameObject bulletSpawner;
 [SerializeField]
 GameObject bullet;
-
+[SerializeField]
+GameObject Crosshair;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +31,11 @@ GameObject bullet;
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButton(0))
+        {
+            Instantiate(bullet, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
+        }
+
         float lookx = mouseMovement.x * Time.deltaTime * mouseSensitivity;
         float looky = mouseMovement.y * Time.deltaTime * mouseSensitivity;
 
@@ -57,8 +63,8 @@ GameObject bullet;
         mouseMovement = lookVal.Get<Vector2>();
     }
 
-    void OnAttack()
+    /*void OnAttack()
     {
         Instantiate(bullet, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
-    }
+    }*/
 }
