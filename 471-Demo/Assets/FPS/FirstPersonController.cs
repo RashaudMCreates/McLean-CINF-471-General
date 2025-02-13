@@ -6,6 +6,9 @@ public class FirstPersonController : MonoBehaviour
 {
 Vector2 movement;
 Vector2 mouseMovement;
+
+bool hasJumped = false;
+
 float cameraUpRotation = 0;
 CharacterController controller;
 [SerializeField]
@@ -21,6 +24,9 @@ GameObject bullet;
 [SerializeField]
 GameObject Crosshair;
 
+[SerializeField]
+GameObject Minigun;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +40,8 @@ GameObject Crosshair;
         if (Input.GetMouseButton(0))
         {
             Instantiate(bullet, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
+            Minigun.transform.Rotate(0, 150, 0);
+
         }
 
         float lookx = mouseMovement.x * Time.deltaTime * mouseSensitivity;
@@ -51,6 +59,16 @@ GameObject Crosshair;
         float moveZ = movement.y;
 
         Vector3 actual_movement = (transform.forward * moveZ) + (transform.right * moveX);
+
+        if (hasJumped)
+        {
+            hasJumped = false;
+            actual_movement.y = 10;
+        }
+
+
+        actual_movement.y -= 10 * Time.deltaTime;
+
         controller.Move(actual_movement * Time.deltaTime * speed);
     }
     void OnMove(InputValue moveVal)
@@ -63,8 +81,13 @@ GameObject Crosshair;
         mouseMovement = lookVal.Get<Vector2>();
     }
 
-    /*void OnAttack()
+    void OnAttack()
     {
         Instantiate(bullet, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
-    }*/
+    }
+
+    void OnJump()
+    {
+        hasJumped = true;
+    }
 }
