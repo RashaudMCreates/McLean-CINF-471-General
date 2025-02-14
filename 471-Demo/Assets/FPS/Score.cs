@@ -6,8 +6,8 @@ public class Score : MonoBehaviour
     //Score is very broken, Forgive the ugly code
 
 
-    int enemies = 0;
-    int newenemy = 0;
+    //int enemies = 0;
+    //int newenemy = 0;
 
     [SerializeField]
     GameObject cube1;
@@ -43,16 +43,16 @@ public class Score : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        enemies = 13;
+        //enemies = 13;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (newenemy <= 0)
+        /*if (newenemy <= 0)
         {
             print("You Win!!!");
-        }
+        }*/
     }
 
    /* private void OnDestroy(cube1) {

@@ -35,6 +35,8 @@ public class MovingTarger : MonoBehaviour
         float startingpointx = t.position.x;
         float startingpointx2 = t2.position.x;
         float startingpointx3 = t3.position.x;
+//I MADE THIS PROJECT WORK OFF OF BROKEN CODEEEEEEEEEEEEEEEEEE!!!!
+//It's Cooked. It's Wrapped. Will do better Next Time
         float startingpointy4 = t2.position.x;
         float startingpointy5 = t3.position.x;
 
@@ -44,6 +46,8 @@ public class MovingTarger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (t != null ) 
+        {
         if (startingpointx > t.position.x + 3)
         {
             speed = speed * -1;
@@ -54,7 +58,10 @@ public class MovingTarger : MonoBehaviour
         }
         
         t.Translate(speed,0,0);
+        }
 
+        if (t2 != null ) 
+        {
         //Line For Cube 2
         if (startingpointx2 > t2.position.x + 3)
         {
@@ -66,7 +73,10 @@ public class MovingTarger : MonoBehaviour
         }
         
         t2.Translate(speed,0,0);
+        }
 
+        if (t3 != null ) 
+        {
         //Line for Cube 3
         if (startingpointx3 > t3.position.x + 3)
         {
@@ -78,7 +88,10 @@ public class MovingTarger : MonoBehaviour
         }
         
         t3.Translate(speed,0,0);
+        }
 
+        if (t4 != null ) 
+        {
         //Line for Cube 4
         if (startingpointy4 > t4.position.y + 3)
         {
@@ -90,7 +103,10 @@ public class MovingTarger : MonoBehaviour
         }
         
         t4.Translate(0,speed,0);
+        }
 
+        if (t5 != null ) 
+        {
         //Line for Cube 5
         if (startingpointy5 > t5.position.y + 3)
         {
@@ -102,7 +118,6 @@ public class MovingTarger : MonoBehaviour
         }
         
         t5.Translate(0,speed,0);
-
-        //print(t.position.y);
+        }
     }
 }

@@ -2257,6 +2257,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460920673}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &467030981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7307546804738029876, guid: b409469f4deb35540b536f0c0c164d39, type: 3}
+  m_PrefabInstance: {fileID: 5993199696978887209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &476237009
 GameObject:
   m_ObjectHideFlags: 0
@@ -4023,6 +4028,65 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817623643}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &828222026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828222028}
+  - component: {fileID: 828222027}
+  m_Layer: 0
+  m_Name: TargetsTogether
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &828222027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828222026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487ac18324f1cad49af3d9e9f0e34b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube1: {fileID: 1392872289}
+  cube2: {fileID: 1993358017}
+  cube3: {fileID: 1565209391}
+  cube4: {fileID: 1425714239}
+  cube5: {fileID: 1772798538}
+  cube6: {fileID: 76909473}
+  cube7: {fileID: 1187740604}
+  cube8: {fileID: 565989235}
+  cube9: {fileID: 1555707987}
+  cube10: {fileID: 608674492}
+  cube11: {fileID: 1207771206}
+  cube12: {fileID: 1027300731}
+  cube13: {fileID: 868639879}
+  cube14: {fileID: 219280550}
+  cube15: {fileID: 407453287}
+--- !u!4 &828222028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828222026}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 419.40002, y: 238.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &867541493
 GameObject:
   m_ObjectHideFlags: 0
@@ -6377,7 +6441,6 @@ GameObject:
   - component: {fileID: 1392872292}
   - component: {fileID: 1392872291}
   - component: {fileID: 1392872295}
-  - component: {fileID: 1392872296}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -6487,33 +6550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03389bd15a26a9449cff4f8f11aba6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1392872296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392872289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487ac18324f1cad49af3d9e9f0e34b41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cube1: {fileID: 1392872289}
-  cube2: {fileID: 1993358017}
-  cube3: {fileID: 1565209391}
-  cube4: {fileID: 1425714239}
-  cube5: {fileID: 1772798538}
-  cube6: {fileID: 76909473}
-  cube7: {fileID: 1187740604}
-  cube8: {fileID: 565989235}
-  cube9: {fileID: 1555707987}
-  cube10: {fileID: 608674492}
-  cube11: {fileID: 1207771206}
-  cube12: {fileID: 1027300731}
-  cube13: {fileID: 868639879}
-  cube14: {fileID: 219280550}
-  cube15: {fileID: 407453287}
 --- !u!1 &1425714239
 GameObject:
   m_ObjectHideFlags: 0
@@ -8949,6 +8985,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 1175339336}
+    - target: {fileID: 437759136048377207, guid: b409469f4deb35540b536f0c0c164d39, type: 3}
+      propertyPath: Minigun
+      value: 
+      objectReference: {fileID: 467030981}
     - target: {fileID: 638456889412989100, guid: b409469f4deb35540b536f0c0c164d39, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -9046,3 +9086,4 @@ SceneRoots:
   - {fileID: 219280555}
   - {fileID: 407453292}
   - {fileID: 447098190}
+  - {fileID: 828222028}
