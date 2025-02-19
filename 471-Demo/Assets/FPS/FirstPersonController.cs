@@ -6,9 +6,6 @@ public class FirstPersonController : MonoBehaviour
 {
 Vector2 movement;
 Vector2 mouseMovement;
-
-bool hasJumped = false;
-
 float cameraUpRotation = 0;
 CharacterController controller;
 [SerializeField]
@@ -21,11 +18,19 @@ GameObject cam;
 GameObject bulletSpawner;
 [SerializeField]
 GameObject bullet;
-[SerializeField]
-GameObject Crosshair;
 
+//Variable for minigun to spin
 [SerializeField]
 GameObject Minigun;
+
+//Jumping Code
+bool hasJumped = false;
+float ySpeed = 0;
+[SerializeField]
+float jumpHeight = 1.0f;
+[SerializeField]
+float gravityVal = 9.8f;
+//Jumping Code End
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -60,14 +65,17 @@ GameObject Minigun;
 
         Vector3 actual_movement = (transform.forward * moveZ) + (transform.right * moveX);
 
+        //Jumping Code
         if (hasJumped)
         {
             hasJumped = false;
-            actual_movement.y = 10;
+            ySpeed = jumpHeight;
         }
 
 
-        actual_movement.y -= 10 * Time.deltaTime;
+        ySpeed -= gravityVal * Time.deltaTime;
+        actual_movement.y = ySpeed;
+        //Jumping Code End
 
         controller.Move(actual_movement * Time.deltaTime * speed);
     }
@@ -86,8 +94,14 @@ GameObject Minigun;
         Instantiate(bullet, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
     }
 
+
+    //Jump Code Obv
     void OnJump()
     {
-        hasJumped = true;
+        if (controller.isGrounded)
+        {
+            hasJumped = true;
+        }
     }
+    //Jump Code End
 }

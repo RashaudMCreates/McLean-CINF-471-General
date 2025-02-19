@@ -2,19 +2,26 @@ using UnityEngine;
 
 public class SSM_Enemy : MonoBehaviour
 {
+[SerializeField]
+GameObject bulletSpawner;
+[SerializeField]
+GameObject bullet;
+
 
     private enum State
     {
         Pace,
         Follow,
+        Dead,
     }
+
     [SerializeField]
     GameObject[] route;
     GameObject target;
 
     int routeIndex = 0;
 
-    float speed = 1.0f;
+    float speed = 2.0f;
 
     private State currentState = State.Pace;
 
@@ -27,6 +34,7 @@ public class SSM_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         switch(currentState)
         {
             case State.Pace:
@@ -35,8 +43,19 @@ public class SSM_Enemy : MonoBehaviour
             case State.Follow:
                 OnFollow();
                 break;
+            case State.Dead:
+                OnDead();
+                break;
         }
+        
+        //Fail safe incase I run out of time...
+        /*if(currentState == State.Follow)
+        {
+            currentState = State.Dead;
+        }*/
+
     }
+
 
     void OnPace()
     {
@@ -74,6 +93,7 @@ public class SSM_Enemy : MonoBehaviour
         //what do we do when we are following?
        print("Are ya Losing, Son?");
        MoveTo(target);
+       Instantiate(bullet, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
 
        //When do we stop following
 
@@ -81,10 +101,22 @@ public class SSM_Enemy : MonoBehaviour
        GameObject obstacle = CheckForward();
        if (obstacle == null)
        {
-        currentState = State.Pace;
+        currentState = State.Dead;
        }
     }
 
+    private void OnCollisionEnter(Collision collision) 
+    {
+        if (collision != null) 
+       {
+        currentState = State.Dead;
+       }
+    }
+
+    void OnDead()
+    {
+        Destroy(gameObject);
+    }
 
     void MoveTo(GameObject t)
     {

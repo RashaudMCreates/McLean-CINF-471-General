@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Vault_Door : MonoBehaviour
 {
-    int health = 5; 
+    int health = 20; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
