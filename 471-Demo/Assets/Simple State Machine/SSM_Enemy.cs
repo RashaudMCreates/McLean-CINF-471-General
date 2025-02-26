@@ -60,7 +60,7 @@ GameObject bullet;
     void OnPace()
     {
         //What do we do while pacing?
-       print("Are ya Winning, Son?");
+       print("Where are ya, Son?");
        target = route[routeIndex];
 
         MoveTo(target);
@@ -91,7 +91,7 @@ GameObject bullet;
     void OnFollow()
     {
         //what do we do when we are following?
-       print("Are ya Losing, Son?");
+       print("I see you, Son!");
        MoveTo(target);
        Instantiate(bullet, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
 
@@ -101,16 +101,16 @@ GameObject bullet;
        GameObject obstacle = CheckForward();
        if (obstacle == null)
        {
-        currentState = State.Dead;
+        currentState = State.Pace;
        }
     }
 
+
+    //GET THE COLLISION TO WORK
     private void OnCollisionEnter(Collision collision) 
     {
-        if (collision != null) 
-       {
+        print("Ay I'm dying here!!!");
         currentState = State.Dead;
-       }
     }
 
     void OnDead()
