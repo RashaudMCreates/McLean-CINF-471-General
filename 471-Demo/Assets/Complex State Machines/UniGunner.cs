@@ -41,21 +41,6 @@ public class UniGunner : MonoBehaviour
 
     //Will figure out how to make a sliding State Eventually
 
-    //Experimental Sliding Code
-    /*[HideInInspector]
-    public float maxSlideTime;
-    public float slideForce;
-    private float slideTimer;
-
-    public float slideYScale;
-    public float startYScale;
-
-    public KeyCode slideKey = KeyCode.Z;
-    private float horizontalInput;
-    private float verticalInput;
-
-    private bool isSliding;*/
-
 
 
 
@@ -91,17 +76,19 @@ public class UniGunner : MonoBehaviour
     float gravityVal = 9.8f;
     //Jumping Code End
 
-    float scale = 0.5f;
-    float y = 0.467f;
-    float x = 0.967f;
-    Transform t;
-    public GameObject cube;
+    //Sliding Variables
+    float slideScale = 0.5f;
+    float slideSize = 0.467f;
+    float normalSize = 0.967f;
+    Transform PlayerObject;
+    public GameObject InsertPlayer;
+    //Sliding Variables End
 
 
 
     void Start()
     {
-        t = cube.GetComponent<Transform>();
+        PlayerObject = InsertPlayer.GetComponent<Transform>();
 
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -152,14 +139,14 @@ public class UniGunner : MonoBehaviour
         {
             isSliding = true;
             Debug.Log("isSliding=true");
-            transform.localScale = new Vector3 (1,scale,1);
-            transform.localPosition = new Vector3(t.position.x, y, t.position.z);
+            transform.localScale = new Vector3 (1,slideScale,1);
+            transform.localPosition = new Vector3(PlayerObject.position.x, slideSize, PlayerObject.position.z);
         } else
         {
             isSliding = false;
             Debug.Log("isSliding=false");
             transform.localScale = new Vector3 (1,1,1);
-            transform.localPosition = new Vector3(t.position.x, x, t.position.z);
+            transform.localPosition = new Vector3(PlayerObject.position.x, normalSize, PlayerObject.position.z);
         }
     }
 
