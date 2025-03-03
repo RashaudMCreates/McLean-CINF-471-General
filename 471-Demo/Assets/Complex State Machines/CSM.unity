@@ -4243,7 +4243,7 @@ MonoBehaviour:
   Minigun: {fileID: 1168148316}
   jumpHeight: 1
   gravityVal: 9.8
-  cube: {fileID: 1285633968}
+  InsertPlayer: {fileID: 1285633968}
 --- !u!143 &1285633971
 CharacterController:
   m_ObjectHideFlags: 0
