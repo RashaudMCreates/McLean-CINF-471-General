@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GunnerWalkState : GunnerBaseState
 {
+
     public override void EnterState(UniGunner Player)
     {
         Debug.Log("I'M WALKIN EREEE!!!");
@@ -10,7 +11,11 @@ public class GunnerWalkState : GunnerBaseState
     public override void UpdateState(UniGunner Player)
     {
         //WHAT ARE WE DOINGGGGGGGGGG
+        Player.ApplyGravity();
+        Player.CAMERALOOKY();
         Player.MovePlayer(Player.default_speed);
+
+        Player.isSliding = false;
 
         //ON WHAT CONDITIONS DO WE LEAVE THE STATE?
         if (Player.movement.magnitude < 0.1)

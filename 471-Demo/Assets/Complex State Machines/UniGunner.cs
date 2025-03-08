@@ -77,10 +77,10 @@ public class UniGunner : MonoBehaviour
     //Jumping Code End
 
     //Sliding Variables
-    float slideScale = 0.5f;
-    float slideSize = 0.467f;
-    float normalSize = 0.967f;
-    Transform PlayerObject;
+    public float slideScale = 0.5f;
+    public float slideSize = 0.467f;
+    public float normalSize = 0.967f;
+    public Transform PlayerObject;
     public GameObject InsertPlayer;
     //Sliding Variables End
 
@@ -98,6 +98,7 @@ public class UniGunner : MonoBehaviour
 
     void Update()
     {
+        
         //Shooting Code
             if (Input.GetMouseButton(0))
             {
@@ -106,48 +107,9 @@ public class UniGunner : MonoBehaviour
             }
         //End of Shooting Code
 
-        //Camera Controls
-            float lookx = mouseMovement.x * Time.deltaTime * mouseSensitivity;
-            float looky = mouseMovement.y * Time.deltaTime * mouseSensitivity;
-
-            cameraUpRotation -= looky;
-
-            cameraUpRotation = Mathf.Clamp(cameraUpRotation, -90, 90);
-
-            cam.transform.localRotation = Quaternion.Euler(cameraUpRotation, 0, 0);
-
-            transform.Rotate(Vector3.up * lookx);
-        //End of Camera Controls
+        
 
         currentState.UpdateState(this);
-
-        //Sneaking Code (Mickey Moused it)
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            isSneaking = true;
-            Debug.Log("isSneaking=true");
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            isSneaking = false;
-            Debug.Log("isSneaking=false");
-        }
-
-        //Sliding Code
-        if(isSprinting && isSneaking) 
-        {
-            isSliding = true;
-            Debug.Log("isSliding=true");
-            transform.localScale = new Vector3 (1,slideScale,1);
-            transform.localPosition = new Vector3(PlayerObject.position.x, slideSize, PlayerObject.position.z);
-        } else
-        {
-            isSliding = false;
-            Debug.Log("isSliding=false");
-            transform.localScale = new Vector3 (1,1,1);
-            transform.localPosition = new Vector3(PlayerObject.position.x, normalSize, PlayerObject.position.z);
-        }
     }
 
 //Camera Stuff?
@@ -179,13 +141,24 @@ public class UniGunner : MonoBehaviour
         }
     }
 
+    void OnCrouch(InputValue crouchVal) 
+    {
+        if (crouchVal.isPressed) 
+        {
+            isSneaking = true;
+        } else 
+        {
+            isSneaking = false;
+        }
+    }
+
     public void MovePlayer(float speed)
     {
         float moveX = movement.x;
         float moveZ = movement.y;
 
         Vector3 actual_movement = (transform.forward * moveZ) + (transform.right * moveX);
-        controller.Move(actual_movement * Time.deltaTime * speed);
+        
 
         //Jumping Code
             if (hasJumped)
@@ -194,10 +167,18 @@ public class UniGunner : MonoBehaviour
                 ySpeed = jumpHeight;
             }
 
-
-            ySpeed -= gravityVal * Time.deltaTime;
-            actual_movement.y = ySpeed;
+            //actual_movement.y = ySpeed;
         //Jumping Code End
+
+        controller.Move(actual_movement * Time.deltaTime * speed);
+    }
+
+    public void ApplyGravity() 
+    {
+        ySpeed -= gravityVal * Time.deltaTime; //Apply gravity
+        Vector3 gravity = new Vector3(0,ySpeed,0);
+        controller.Move(gravity);
+
     }
 
     public void SwitchState(GunnerBaseState newState)
@@ -206,14 +187,31 @@ public class UniGunner : MonoBehaviour
         currentState.EnterState(this);
     }
 
-
 //Jump Code Obv
     void OnJump()
     {
+        Debug.Log("space pressed");
         if (controller.isGrounded)
         {
             hasJumped = true;
+            Debug.Log("is grounded");
         }
     }
 //Jump Code End
+
+    public void CAMERALOOKY()
+    {
+    //Camera Controls
+        float lookx = mouseMovement.x * Time.deltaTime * mouseSensitivity;
+        float looky = mouseMovement.y * Time.deltaTime * mouseSensitivity;
+
+        cameraUpRotation -= looky;
+
+        cameraUpRotation = Mathf.Clamp(cameraUpRotation, -90, 90);
+
+        cam.transform.localRotation = Quaternion.Euler(cameraUpRotation, 0, 0);
+
+        transform.Rotate(Vector3.up * lookx);
+    //End of Camera Controls
+    }
 }

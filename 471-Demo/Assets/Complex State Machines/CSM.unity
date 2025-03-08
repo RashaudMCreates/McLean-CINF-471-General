@@ -4241,8 +4241,12 @@ MonoBehaviour:
   bulletSpawner: {fileID: 479437821}
   bullet: {fileID: 2021436609}
   Minigun: {fileID: 1168148316}
-  jumpHeight: 1
+  jumpHeight: 100
   gravityVal: 9.8
+  slideScale: 0.5
+  slideSize: 0.467
+  normalSize: 0.967
+  PlayerObject: {fileID: 0}
   InsertPlayer: {fileID: 1285633968}
 --- !u!143 &1285633971
 CharacterController:

@@ -25,10 +25,12 @@ GameObject bullet;
 
     private State currentState = State.Pace;
 
+    Animator anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,7 @@ GameObject bullet;
 
     void OnPace()
     {
+        anim.SetBool("Following", false);
         //What do we do while pacing?
        print("Where are ya, Son?");
        target = route[routeIndex];
@@ -90,6 +93,7 @@ GameObject bullet;
 
     void OnFollow()
     {
+        anim.SetBool("Following", true);
         //what do we do when we are following?
        print("I see you, Son!");
        MoveTo(target);
