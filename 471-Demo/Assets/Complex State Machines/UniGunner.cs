@@ -65,7 +65,7 @@ public class UniGunner : MonoBehaviour
 
     //Variable for minigun to spin
     [SerializeField]
-    GameObject Minigun;
+    public GameObject Minigun;
 
     //Jumping Code
     bool hasJumped = false;
@@ -77,11 +77,21 @@ public class UniGunner : MonoBehaviour
     //Jumping Code End
 
     //Sliding Variables
+    [HideInInspector]
     public float slideScale = 0.5f;
+    [HideInInspector]
     public float slideSize = 0.467f;
+    [HideInInspector]
     public float normalSize = 0.967f;
+
+    [HideInInspector]
     public Transform PlayerObject;
+
     public GameObject InsertPlayer;
+    public GameObject InsertMinigun;
+
+    [HideInInspector]
+    public Transform MinigunSize;
     //Sliding Variables End
 
 
@@ -89,6 +99,8 @@ public class UniGunner : MonoBehaviour
     void Start()
     {
         PlayerObject = InsertPlayer.GetComponent<Transform>();
+        MinigunSize = InsertMinigun.GetComponent<Transform>();
+        
 
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -161,12 +173,6 @@ public class UniGunner : MonoBehaviour
         
 
         //Jumping Code
-            if (hasJumped)
-            {
-                hasJumped = false;
-                ySpeed = jumpHeight;
-            }
-
             //actual_movement.y = ySpeed;
         //Jumping Code End
 
@@ -179,6 +185,11 @@ public class UniGunner : MonoBehaviour
         Vector3 gravity = new Vector3(0,ySpeed,0);
         controller.Move(gravity);
 
+        if (hasJumped)
+            {
+                hasJumped = false;
+                ySpeed = jumpHeight;
+            }
     }
 
     public void SwitchState(GunnerBaseState newState)
