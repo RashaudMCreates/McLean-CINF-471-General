@@ -4,7 +4,7 @@ public class GunnerSneakState : GunnerBaseState
 {
     public override void EnterState(UniGunner Player)
     {
-        Debug.Log("I'M SNEAKIN EREEE!!!");
+        //Debug.Log("I'M SNEAKIN EREEE!!!");
     }
 
     public override void UpdateState(UniGunner Player)

@@ -5,7 +5,7 @@ public class GunnerWalkState : GunnerBaseState
 
     public override void EnterState(UniGunner Player)
     {
-        Debug.Log("I'M WALKIN EREEE!!!");
+        //Debug.Log("I'M WALKIN EREEE!!!");
     }
 
     public override void UpdateState(UniGunner Player)

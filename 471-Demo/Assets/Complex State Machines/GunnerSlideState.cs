@@ -6,7 +6,7 @@ public class GunnerSlideState : GunnerBaseState
 
     public override void EnterState(UniGunner Player)
     {
-        Debug.Log("I'M SLIDIN EREEE!!!");
+        //Debug.Log("I'M SLIDIN EREEE!!!");
         starttime = Time.time;
     }
 

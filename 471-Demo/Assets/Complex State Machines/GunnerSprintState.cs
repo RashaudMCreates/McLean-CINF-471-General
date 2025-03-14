@@ -6,7 +6,7 @@ public class GunnerSprintState : GunnerBaseState
 
     public override void EnterState(UniGunner Player)
     {
-        Debug.Log("I'M SPRINTING EREEE!!!");
+        //Debug.Log("I'M SPRINTING EREEE!!!");
         starttime = Time.time;
     }
 

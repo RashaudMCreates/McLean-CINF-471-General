@@ -4,7 +4,7 @@ public class GunnerIdleState : GunnerBaseState
 {
     public override void EnterState(UniGunner Player)
     {
-        Debug.Log("I'm IDLE!!!");
+        //Debug.Log("I'm IDLE!!!");
     }
 
     public override void UpdateState(UniGunner Player)
